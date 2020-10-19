@@ -1,3 +1,6 @@
+# custom files
+nodemon.json
+
 # Logs
 logs
 *.log
