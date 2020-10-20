@@ -13,7 +13,7 @@ mongoose.connect(`mongodb+srv://bingland:${ process.env.MONGO_ATLAS_PW }@cluster
     useUnifiedTopology: true
 })
 
-app.listen(3000, () => { console.log(`Server running on port ${port}`) })
+app.listen(port, () => { console.log(`Server running on port ${port}`) })
 
 // Schemas
 const Product = require('./models/Product')
