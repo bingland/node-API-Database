@@ -20,7 +20,7 @@ const Product = require('./models/Product')
 const Manufacturer = require('./models/Manufacturer')
 
 app.get('/', (req, res) => {
-    res.send('Make requests to /products and /manufacturers')
+    res.send('Make requests to /products /manufacturers')
 })
 
 // POST
@@ -67,15 +67,6 @@ app.get('/products', (req, res) => {
 })
 
 app.get('/manufacturers', (req, res) => {
-    Manufacturer.find((err, manufacturers) => {
-        if (err) console.log(err)
-        res.json(manufacturers)
-    })
-})
-
-// GET all the products of manufacturers
-// list manufacturers with their respective products
-app.get('/inventory', (req, res) => {
     Manufacturer.find()
     .populate('products')
     .exec((err, results) => {
