@@ -41,10 +41,13 @@ app.post('/products', (req, res) => {
 })
 
 app.post('/manufacturers', (req, res) => {
+    console.log(req.query)
+    console.log(req.query.products)
     Manufacturer.create({
         name: req.query.name,
         address: req.query.address,
-        phone: req.query.phone
+        phone: req.query.phone,
+        products: req.query.products.split(',')
     }, (err, manufacturers) => {
         if (err) console.log(err)
         
@@ -67,6 +70,17 @@ app.get('/manufacturers', (req, res) => {
     Manufacturer.find((err, manufacturers) => {
         if (err) console.log(err)
         res.json(manufacturers)
+    })
+})
+
+// GET all the products of manufacturers
+// list manufacturers with their respective products
+app.get('/inventory', (req, res) => {
+    Manufacturer.find()
+    .populate('products')
+    .exec((err, results) => {
+        if (err) console.log(err)
+        res.json(results)
     })
 })
 
