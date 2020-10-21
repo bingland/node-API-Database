@@ -20,7 +20,7 @@ const Product = require('./models/Product')
 const Manufacturer = require('./models/Manufacturer')
 
 app.get('/', (req, res) => {
-    res.send('Make requests to /products /manufacturers')
+    res.send('Make requests to /products and /manufacturers.')
 })
 
 // POST
